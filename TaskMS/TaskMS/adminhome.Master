@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminhome.master.cs" Inherits="TaskMS.adminhome" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!-- FontAwesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- JQuery cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- google fonts cdn-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    <!-- SideNavbhar-->
+    <link href="CSS/sidenav.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-left: 162px">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Task Management System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+                        <li class="nav-item">
+                            <a class="nav-link active ms-4" aria-current="page" href="#"></a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/setting.png" />
+                                    Setting
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="adpro.aspx">Profile</a></li>
+                                    <li><a class="dropdown-item" href="adpass.aspx">Change Password</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                             <img src="images/lologo.png" /><a href="login.aspx">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- SideNavbar-->
+        <nav class="sidenav" style="height: 165%; box-shadow: 0 20px 35px #2196f300; background-color: #ababab; z-index: 1000; position: fixed; top: 0; left: 0">
+            <ul class="side-items">
+                <li>
+                    <%--<a href="#" class="logo">--%>
+                    <asp:Image class="logo" ID="Image1" asp-append-version="true" runat="server" ImageUrl='<%# Eval("image") %>' />
+                    <%--  </a>--%>
+                </li>
+                <li>
+                    <asp:LinkButton ID="overview" OnClick="overview_Click" runat="server" class="item">
+                    <i class="fass fa-solid fa-house-user" style="color:black"></i>            
+                    <span class="nav-items"; style="color:black">Dashboard</span>
+                    </asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton href="adminempl.aspx" ID="Teamembers" runat="server" class="item"><i class="fass fa-solid fa-people-group" style="color:black"></i>
+                    <span class="nav-items"; style="color:black">Employee</span></asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="Attendance" runat="server" OnClick="Attendance_Click" class="item"><i class="fass fa-solid fa-list-check" style="color:black"></i>
+                    <span class="nav-items"; style="color:black">Task</span></asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="assets" href="status.aspx" runat="server" class="item"><i class="fass fa-solid fa-bars-progress" style="color:black"></i>
+                    <span class="nav-items"; style="color:black">Task Status</span></asp:LinkButton></li>
+                  <li><asp:LinkButton ID="Addemp" runat="server" href="smsbox.aspx" class="item"><i class="fass fa-solid fa-envelope"style="color:black"></i>
+                    <span class="nav-items"; style="color:black">Messages</span></asp:LinkButton></li>
+                <li>
+                   <asp:LinkButton ID="calender" runat="server" href="report.aspx" class="item"><i class="fass fa-solid fa-file-invoice" style="color:black"></i>
+                   <span class="nav-items"; style="color:black">Report</span></asp:LinkButton></li>
+               </ul>
+        </nav>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
